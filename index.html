@@ -148,11 +148,12 @@
     .products { padding: 100px 0; }
     .products-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 32px;
-      max-width: 960px;
+      max-width: 1100px;
       margin: 0 auto;
     }
+    @media (max-width: 1024px) { .products-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 768px) { .products-grid { grid-template-columns: 1fr; max-width: 520px; } }
 
     .product-card {
@@ -401,6 +402,30 @@
           </div>
         </div>
 
+        <!-- AI Photo Editor -->
+        <div class="product-card fade-in">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3a9 9 0 100 18 9 9 0 000-18z"/>
+              <path d="M12 3v18"/>
+              <path d="M12 3c4 4 4 14 0 18"/>
+              <path d="M12 3c-4 4-4 14 0 18"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3>AI Photo Editor</h3>
+          <p class="desc">Professional AI-powered photo editing for product and brand imagery. Describe what you want in plain English.</p>
+          <ul class="product-features">
+            <li>Describe changes in plain English &mdash; background swaps, color adjustments, style changes</li>
+            <li>Iterative editing &mdash; refine results with follow-up prompts</li>
+            <li>Professional-quality output for products and branding</li>
+            <li>No design skills required</li>
+          </ul>
+          <div class="product-cta">
+            <a href="#contact" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -446,7 +471,7 @@
         <p class="about-subtitle">"Fior Saoirse" (fee-ur see-ur-sha) &mdash; Irish Gaelic for "True Freedom"</p>
         <div class="about-text">
           <p>Fior Saoirse is a software company that builds AI automation tools for small businesses. We focus on solutions that actually work &mdash; practical, reliable, and designed for people who don't have time to babysit technology.</p>
-          <p>Founded by Mac McDonald &mdash; a former college athlete turned tech builder &mdash; Fiorsaoirse was born from a simple observation: small business owners spend too much time on tasks that machines should handle. Whether it's generating social media content or tracking business expenses, our tools give you back your most valuable asset &mdash; your time.</p>
+          <p>Founded by a team passionate about building AI tools that actually work for small businesses, Fiorsaoirse was born from a simple observation: small business owners spend too much time on tasks that machines should handle. Whether it's generating social media content, editing product photos, or tracking business expenses, our tools give you back your most valuable asset &mdash; your time.</p>
         </div>
       </div>
     </div>
@@ -486,7 +511,8 @@
                 <option value="" disabled selected>Select an option</option>
                 <option value="FCA Studio Agent">FCA Studio Agent</option>
                 <option value="SnapReceipt">SnapReceipt</option>
-                <option value="Both">Both</option>
+                <option value="AI Photo Editor">AI Photo Editor</option>
+                <option value="Multiple Products">Multiple Products</option>
                 <option value="Other">Other</option>
               </select>
             </div>
