@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Fior Saoirse — True Freedom Through Intelligent Automation. AI-powered solutions for fitness professionals, Amazon sellers, and businesses.">
+  <meta name="description" content="Fiorsaoirse LLC builds AI-powered automation tools for small businesses. FCA Studio Agent for fitness content and SnapReceipt for expense tracking.">
   <meta name="theme-color" content="#0B1D3A">
-  <title>Fior Saoirse | Intelligent Automation for True Freedom</title>
+  <title>Fiorsaoirse | AI-Powered Tools for Your Business</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,9 +13,9 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ═══════════════════════════════════════════
+    /* ===================================================
        DESIGN TOKENS
-       ═══════════════════════════════════════════ */
+       =================================================== */
     :root {
       --color-primary:    #0B1D3A;
       --color-secondary:  #2E5C8A;
@@ -39,16 +39,11 @@
       --radius-pill: 999px;
     }
 
-    /* ═══════════════════════════════════════════
+    /* ===================================================
        RESET & BASE
-       ═══════════════════════════════════════════ */
+       =================================================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-text-size-adjust: 100%;
-    }
-
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
       font-family: var(--font-body);
       color: var(--color-text);
@@ -56,658 +51,260 @@
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
-
-    h1, h2, h3, h4 {
-      font-family: var(--font-heading);
-      color: var(--color-primary);
-      line-height: 1.25;
-    }
-
+    h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--color-primary); line-height: 1.25; }
     a { color: var(--color-secondary); text-decoration: none; }
     a:hover { color: var(--color-accent); }
-
     img { max-width: 100%; display: block; }
+    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-    .container {
-      width: 100%;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ═══════════════════════════════════════════
+    /* ===================================================
        NAVIGATION
-       ═══════════════════════════════════════════ */
+       =================================================== */
     .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       background: rgba(11,29,58,0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
       transition: box-shadow 0.3s;
     }
     .nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
     .nav-logo svg { width: 32px; height: 32px; }
-    .nav-logo span {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 18px;
-      color: #fff;
-      letter-spacing: -0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      color: rgba(255,255,255,0.75);
-      font-size: 14px;
-      font-weight: 500;
-      transition: color 0.2s;
-      letter-spacing: 0.01em;
-    }
+    .nav-logo span { font-family: var(--font-heading); font-weight: 700; font-size: 18px; color: #fff; letter-spacing: -0.02em; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); font-size: 14px; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: #fff; }
-
     .nav-cta {
-      background: var(--color-secondary);
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: var(--radius-pill);
-      font-weight: 600;
-      font-size: 14px;
-      transition: background 0.2s, transform 0.15s;
+      background: var(--color-secondary); color: #fff !important;
+      padding: 8px 20px; border-radius: var(--radius-pill);
+      font-weight: 600; font-size: 14px; transition: background 0.2s, transform 0.15s;
     }
     .nav-cta:hover { background: var(--color-accent); color: #fff !important; transform: translateY(-1px); }
-
-    /* Mobile menu */
     .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
     .nav-toggle svg { stroke: #fff; }
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 64px; left: 0; right: 0;
-        background: rgba(11,29,58,0.98);
-        padding: 20px 24px;
-        gap: 16px;
+        display: flex; flex-direction: column;
+        position: absolute; top: 64px; left: 0; right: 0;
+        background: rgba(11,29,58,0.98); padding: 20px 24px; gap: 16px;
         border-bottom: 1px solid rgba(255,255,255,0.08);
       }
       .nav-toggle { display: block; }
     }
 
-    /* ═══════════════════════════════════════════
+    /* ===================================================
        HERO
-       ═══════════════════════════════════════════ */
+       =================================================== */
     .hero {
       padding: 140px 0 100px;
       background: linear-gradient(160deg, #0B1D3A 0%, #142d52 50%, #1a3a66 100%);
-      color: #fff;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      color: #fff; text-align: center; position: relative; overflow: hidden;
     }
     .hero::before {
-      content: '';
-      position: absolute;
-      top: -200px; right: -200px;
+      content: ''; position: absolute; top: -200px; right: -200px;
       width: 600px; height: 600px;
       background: radial-gradient(circle, rgba(212,148,58,0.08) 0%, transparent 70%);
       border-radius: 50%;
     }
     .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -150px; left: -150px;
+      content: ''; position: absolute; bottom: -150px; left: -150px;
       width: 500px; height: 500px;
       background: radial-gradient(circle, rgba(46,92,138,0.1) 0%, transparent 70%);
       border-radius: 50%;
     }
-
     .hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
-
     .hero-tagline {
-      display: inline-block;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: 24px;
+      display: inline-block; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--color-accent); margin-bottom: 24px;
     }
-
-    .hero h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 20px;
-      letter-spacing: -0.02em;
-    }
-
-    .hero p {
-      font-size: clamp(16px, 2vw, 19px);
-      color: rgba(255,255,255,0.75);
-      max-width: 560px;
-      margin: 0 auto 36px;
-      line-height: 1.7;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; color: #fff; margin-bottom: 20px; letter-spacing: -0.02em; }
+    .hero p { font-size: clamp(16px, 2vw, 19px); color: rgba(255,255,255,0.75); max-width: 560px; margin: 0 auto 36px; line-height: 1.7; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: var(--radius-sm);
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 15px;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--radius-sm);
+      font-family: var(--font-heading); font-weight: 600; font-size: 15px;
+      transition: all 0.2s; cursor: pointer; border: none; text-decoration: none;
     }
-    .btn-primary {
-      background: var(--color-secondary);
-      color: #fff;
-    }
+    .btn-primary { background: var(--color-secondary); color: #fff; }
     .btn-primary:hover { background: #3a6e9e; color: #fff; transform: translateY(-1px); box-shadow: var(--shadow-md); }
-
-    .btn-outline {
-      background: transparent;
-      color: #fff;
-      border: 1.5px solid rgba(255,255,255,0.3);
-    }
-    .btn-outline:hover { border-color: #fff; color: #fff; transform: translateY(-1px); }
-
-    .btn-accent {
-      background: var(--color-accent);
-      color: #fff;
-    }
+    .btn-accent { background: var(--color-accent); color: #fff; }
     .btn-accent:hover { background: #c08530; color: #fff; transform: translateY(-1px); }
 
-    .btn-ghost {
-      background: transparent;
-      color: var(--color-secondary);
-      padding: 14px 12px;
-    }
-    .btn-ghost:hover { color: var(--color-accent); }
+    /* ===================================================
+       SECTION SHARED
+       =================================================== */
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .section-header p { font-size: 17px; color: var(--color-muted); max-width: 520px; margin: 0 auto; }
 
-    /* ═══════════════════════════════════════════
-       PRODUCTS
-       ═══════════════════════════════════════════ */
-    .products {
-      padding: 100px 0;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    .section-header h2 {
-      font-size: clamp(26px, 4vw, 38px);
-      font-weight: 800;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-    .section-header p {
-      font-size: 17px;
-      color: var(--color-muted);
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
+    /* ===================================================
+       PRODUCTS — two cards side-by-side
+       =================================================== */
+    .products { padding: 100px 0; }
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      max-width: 960px;
+      margin: 0 auto;
     }
-    @media (max-width: 900px) { .products-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+    @media (max-width: 768px) { .products-grid { grid-template-columns: 1fr; max-width: 520px; } }
 
     .product-card {
-      background: var(--color-card);
-      border-radius: var(--radius-lg);
-      padding: 36px 28px;
-      border: 1px solid var(--color-border);
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
+      background: var(--color-card); border-radius: var(--radius-lg);
+      padding: 40px 32px; border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
       transition: box-shadow 0.25s, transform 0.25s;
     }
-    .product-card:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-3px);
-    }
-
-    .product-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: var(--radius-pill);
-      margin-bottom: 20px;
-      width: fit-content;
-    }
-    .badge-active {
-      background: #ecfdf5;
-      color: #166534;
-    }
-    .badge-talk {
-      background: #fef3c7;
-      color: #92400e;
-    }
+    .product-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
 
     .product-icon {
-      width: 52px; height: 52px;
-      background: var(--color-subtle);
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
+      width: 56px; height: 56px; background: var(--color-subtle);
+      border-radius: var(--radius-md); display: flex;
+      align-items: center; justify-content: center; margin-bottom: 24px;
     }
-    .product-icon svg {
-      width: 26px; height: 26px;
-      stroke: var(--color-secondary);
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
+    .product-icon svg { width: 28px; height: 28px; stroke: var(--color-secondary); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-    .product-card h3 {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
+    .product-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+    .product-card .desc { font-size: 15px; color: var(--color-muted); margin-bottom: 24px; line-height: 1.7; }
+    .product-features { list-style: none; margin-bottom: 32px; flex: 1; }
+    .product-features li { font-size: 14px; color: var(--color-text); padding: 6px 0; padding-left: 22px; position: relative; }
+    .product-features li::before { content: ''; position: absolute; left: 0; top: 13px; width: 6px; height: 6px; background: var(--color-accent); border-radius: 50%; }
+    .product-features .coming-soon { color: var(--color-muted); font-style: italic; }
 
-    .product-card .desc {
-      font-size: 15px;
-      color: var(--color-muted);
-      margin-bottom: 20px;
-      line-height: 1.7;
-    }
-
-    .product-features {
-      list-style: none;
-      margin-bottom: 28px;
-      flex: 1;
-    }
-    .product-features li {
-      font-size: 14px;
-      color: var(--color-text);
-      padding: 5px 0;
-      padding-left: 22px;
-      position: relative;
-    }
-    .product-features li::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 12px;
-      width: 6px; height: 6px;
-      background: var(--color-accent);
-      border-radius: 50%;
-    }
-
-    .product-cta {
-      margin-top: auto;
-    }
+    .product-cta { margin-top: auto; }
     .product-cta .btn { width: 100%; justify-content: center; }
-    .product-cta .secondary-link {
-      display: block;
-      text-align: center;
-      margin-top: 12px;
-      font-size: 13px;
-      color: var(--color-secondary);
-      font-weight: 500;
-    }
-    .product-cta .secondary-link:hover { color: var(--color-accent); }
 
-    /* ═══════════════════════════════════════════
-       HOW IT WORKS
-       ═══════════════════════════════════════════ */
-    .how-it-works {
-      padding: 100px 0;
-      background: var(--color-subtle);
-    }
+    /* ===================================================
+       HOW IT WORKS — 4 steps
+       =================================================== */
+    .how-it-works { padding: 100px 0; background: var(--color-subtle); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 60px; }
+    @media (max-width: 900px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .steps { grid-template-columns: 1fr; max-width: 360px; margin: 60px auto 0; } }
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      margin-top: 60px;
-    }
-    @media (max-width: 768px) { .steps { grid-template-columns: 1fr; max-width: 420px; margin: 60px auto 0; } }
-
-    .step {
-      text-align: center;
-    }
-
+    .step { text-align: center; }
     .step-number {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: var(--color-primary);
-      color: #fff;
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 22px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--color-primary); color: #fff;
+      font-family: var(--font-heading); font-weight: 800; font-size: 22px;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
     }
+    .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+    .step p { font-size: 14px; color: var(--color-muted); line-height: 1.65; max-width: 240px; margin: 0 auto; }
 
-    .step h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
+    /* ===================================================
+       ABOUT
+       =================================================== */
+    .about { padding: 100px 0; }
+    .about-content { max-width: 700px; margin: 0 auto; text-align: center; }
+    .about-content h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; margin-bottom: 8px; letter-spacing: -0.02em; }
+    .about-subtitle { font-size: 15px; font-style: italic; color: var(--color-accent); margin-bottom: 28px; }
+    .about-text { font-size: 17px; color: var(--color-muted); line-height: 1.8; }
+    .about-text p + p { margin-top: 20px; }
 
-    .step p {
-      font-size: 15px;
-      color: var(--color-muted);
-      line-height: 1.65;
-      max-width: 300px;
-      margin: 0 auto;
-    }
-
-    /* Step connector lines (desktop) */
-    .steps-wrapper { position: relative; }
-    @media (min-width: 769px) {
-      .steps-wrapper::before,
-      .steps-wrapper::after {
-        content: '';
-        position: absolute;
-        top: 28px;
-        height: 2px;
-        background: var(--color-border);
-        width: calc(33.33% - 60px);
-      }
-      .steps-wrapper::before { left: calc(16.66% + 30px); }
-      .steps-wrapper::after { right: calc(16.66% + 30px); }
-    }
-
-    /* ═══════════════════════════════════════════
-       MISSION
-       ═══════════════════════════════════════════ */
-    .mission {
-      padding: 100px 0;
-    }
-
-    .mission-content {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .mission-content h2 {
-      font-size: clamp(26px, 4vw, 38px);
-      font-weight: 800;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-
-    .mission-subtitle {
-      font-size: 15px;
-      font-style: italic;
-      color: var(--color-accent);
-      margin-bottom: 28px;
-    }
-
-    .mission-content .mission-text {
-      font-size: 17px;
-      color: var(--color-muted);
-      line-height: 1.8;
-    }
-    .mission-content .mission-text p + p { margin-top: 20px; }
-
-    /* ═══════════════════════════════════════════
-       CONTACT
-       ═══════════════════════════════════════════ */
-    .contact {
-      padding: 100px 0;
-      background: var(--color-subtle);
-    }
-
-    .contact-inner {
-      max-width: 580px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .contact-inner h2 {
-      font-size: clamp(26px, 4vw, 38px);
-      font-weight: 800;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-
-    .contact-inner > p {
-      font-size: 17px;
-      color: var(--color-muted);
-      margin-bottom: 40px;
-      line-height: 1.7;
-    }
+    /* ===================================================
+       CONTACT FORM
+       =================================================== */
+    .contact { padding: 100px 0; background: var(--color-subtle); }
+    .contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+    .contact-inner h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .contact-inner > p { font-size: 17px; color: var(--color-muted); margin-bottom: 40px; line-height: 1.7; }
 
     .contact-form {
-      background: var(--color-card);
-      border-radius: var(--radius-lg);
-      padding: 36px;
-      border: 1px solid var(--color-border);
-      box-shadow: var(--shadow-sm);
-      text-align: left;
+      background: var(--color-card); border-radius: var(--radius-lg);
+      padding: 36px; border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm); text-align: left;
     }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
     @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
-
     .form-group { margin-bottom: 16px; }
     .form-group:last-of-type { margin-bottom: 24px; }
-
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--color-primary);
-      margin-bottom: 6px;
-    }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--color-primary); margin-bottom: 6px; }
+    .form-group .optional { font-weight: 400; color: var(--color-muted); }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid var(--color-border);
-      border-radius: var(--radius-sm);
-      font-family: var(--font-body);
-      font-size: 15px;
-      color: var(--color-text);
-      background: #fff;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%; padding: 12px 14px;
+      border: 1.5px solid var(--color-border); border-radius: var(--radius-sm);
+      font-family: var(--font-body); font-size: 15px; color: var(--color-text);
+      background: #fff; transition: border-color 0.2s, box-shadow 0.2s;
     }
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      outline: none;
-      border-color: var(--color-secondary);
+      outline: none; border-color: var(--color-secondary);
       box-shadow: 0 0 0 3px rgba(46,92,138,0.1);
     }
     .form-group textarea { resize: vertical; min-height: 100px; }
     .form-group select {
-      -webkit-appearance: none;
-      appearance: none;
+      -webkit-appearance: none; appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      padding-right: 40px;
+      background-repeat: no-repeat; background-position: right 12px center; padding-right: 40px;
     }
 
+    .conditional-field { display: none; }
+    .conditional-field.show { display: block; }
+
     .form-submit {
-      width: 100%;
-      padding: 14px;
-      background: var(--color-secondary);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 16px;
-      cursor: pointer;
+      width: 100%; padding: 14px;
+      background: var(--color-secondary); color: #fff; border: none;
+      border-radius: var(--radius-sm); font-family: var(--font-heading);
+      font-weight: 700; font-size: 16px; cursor: pointer;
       transition: background 0.2s, transform 0.15s;
     }
     .form-submit:hover { background: #3a6e9e; transform: translateY(-1px); }
     .form-submit:active { transform: translateY(0); }
 
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-    }
+    .form-success { display: none; text-align: center; padding: 40px 20px; }
     .form-success.show { display: block; }
-    .form-success .check-icon { font-size: 48px; margin-bottom: 16px; }
+    .form-success .check-icon { font-size: 48px; margin-bottom: 16px; color: #166534; }
     .form-success h3 { font-size: 22px; margin-bottom: 8px; }
     .form-success p { color: var(--color-muted); font-size: 15px; }
 
-    .contact-secondary {
-      margin-top: 24px;
-      font-size: 14px;
-      color: var(--color-muted);
-    }
+    .contact-secondary { margin-top: 24px; font-size: 14px; color: var(--color-muted); }
 
-    /* ═══════════════════════════════════════════
+    /* ===================================================
        FOOTER
-       ═══════════════════════════════════════════ */
-    .footer {
-      background: var(--color-primary);
-      color: rgba(255,255,255,0.6);
-      padding: 60px 0 32px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 48px;
-    }
-    @media (max-width: 768px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 480px) {
-      .footer-grid { grid-template-columns: 1fr; }
-    }
-
-    .footer-brand .nav-logo { margin-bottom: 12px; }
-    .footer-brand p { font-size: 14px; line-height: 1.65; max-width: 280px; }
-
-    .footer-col h4 {
-      font-family: var(--font-heading);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 16px;
-    }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 10px; }
-    .footer-col a {
-      color: rgba(255,255,255,0.55);
-      font-size: 14px;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover { color: var(--color-accent); }
-
+       =================================================== */
+    .footer { background: var(--color-primary); color: rgba(255,255,255,0.6); padding: 48px 0 32px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; margin-bottom: 32px; }
+    .footer-brand p { font-size: 14px; line-height: 1.65; max-width: 280px; margin-top: 12px; }
+    .footer-contact { font-size: 14px; text-align: right; }
+    .footer-contact a { color: rgba(255,255,255,0.7); }
+    .footer-contact a:hover { color: var(--color-accent); }
+    .footer-contact p { margin-bottom: 6px; }
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .footer-bottom span { font-size: 13px; }
-    .footer-social {
-      display: flex;
-      gap: 16px;
-    }
-    .footer-social a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
-      transition: background 0.2s;
-    }
-    .footer-social a:hover { background: rgba(255,255,255,0.12); }
-    .footer-social svg {
-      width: 18px; height: 18px;
-      stroke: rgba(255,255,255,0.6);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;
+      text-align: center; font-size: 13px;
     }
 
-    /* ═══════════════════════════════════════════
+    @media (max-width: 520px) {
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .footer-contact { text-align: center; }
+      .footer-brand p { margin: 12px auto 0; }
+    }
+
+    /* ===================================================
        ANIMATIONS
-       ═══════════════════════════════════════════ */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+       =================================================== */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
-  <!-- ════════════════════════════════════════
-       NAVIGATION
-       ════════════════════════════════════════ -->
+  <!-- NAVIGATION -->
   <nav class="nav" id="nav">
     <div class="container nav-inner">
       <a href="#" class="nav-logo">
-        <!-- Owl icon -->
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="16" cy="16" r="15" stroke="#D4943A" stroke-width="1.5"/>
           <circle cx="11" cy="14" r="3.5" stroke="#fff" stroke-width="1.5"/>
@@ -717,59 +314,47 @@
           <path d="M16 18.5L14 22h4l-2-3.5z" fill="#D4943A"/>
           <path d="M8 9c2-2 6-3 8-3s6 1 8 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
         </svg>
-        <span>Fior Saoirse</span>
+        <span>Fiorsaoirse</span>
       </a>
 
       <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
         </svg>
       </button>
 
       <ul class="nav-links" id="navLinks">
         <li><a href="#products">Products</a></li>
-        <li><a href="#mission">Mission</a></li>
-        <li><a href="#contact" class="nav-cta">Get Started</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- ════════════════════════════════════════
-       HERO
-       ════════════════════════════════════════ -->
+  <!-- HERO -->
   <section class="hero" id="hero">
     <div class="container hero-content">
-      <div class="hero-tagline">True Freedom Through Intelligent Automation</div>
-      <h1>Intelligent Automation for True Freedom</h1>
-      <p>AI-powered solutions that eliminate repetitive work and give business owners their time back.</p>
-      <div class="hero-ctas">
-        <a href="#products" class="btn btn-primary">Explore Solutions <span>&rarr;</span></a>
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
-      </div>
+      <div class="hero-tagline">Fiorsaoirse LLC &mdash; Baltimore, MD</div>
+      <h1>AI-Powered Tools for Your Business</h1>
+      <p>We build intelligent automation that saves time and grows revenue &mdash; so you can focus on what you do best.</p>
+      <a href="#contact" class="btn btn-primary">Get in Touch <span>&rarr;</span></a>
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
-       PRODUCTS
-       ════════════════════════════════════════ -->
+  <!-- PRODUCTS -->
   <section class="products" id="products">
     <div class="container">
       <div class="section-header fade-in">
-        <h2>Our Solutions</h2>
-        <p>Purpose-built AI automation for businesses ready to scale.</p>
+        <h2>What We Build</h2>
+        <p>Purpose-built AI tools for small businesses ready to work smarter.</p>
       </div>
 
       <div class="products-grid">
 
-        <!-- Card 1: Fitness Content Agent -->
+        <!-- FCA Studio Agent -->
         <div class="product-card fade-in">
-          <div class="product-badge badge-active">
-            <span>&#10003;</span> Active &mdash; Launching March 1, 2026
-          </div>
           <div class="product-icon">
-            <!-- Content/social media icon -->
             <svg viewBox="0 0 24 24">
               <rect x="3" y="3" width="18" height="18" rx="3"/>
               <line x1="3" y1="15" x2="21" y2="15"/>
@@ -777,67 +362,42 @@
               <path d="M21 15l-4.5-4.5L11 16"/>
             </svg>
           </div>
-          <h3>Fitness Content Agent</h3>
-          <p class="desc">Transform your fitness brand with AI-powered social media content. Generate stunning posts, engaging captions, and professional imagery &mdash; individually or for your entire studio team.</p>
+          <h3>FCA Studio Agent</h3>
+          <p class="desc">AI-powered social media content generation built for fitness professionals. From solo trainers to multi-instructor studios.</p>
           <ul class="product-features">
-            <li>AI-generated posts, captions &amp; imagery tailored to your brand</li>
-            <li>Professional photo editing with smart color matching</li>
-            <li>Individual plans ($79&ndash;$149/mo) and Studio plans available</li>
-            <li>7-day free trial &mdash; no credit card required</li>
+            <li>Auto-generates posts tailored to each instructor's voice and style</li>
+            <li>Smart photo matching and AI photo editing</li>
+            <li>Video reels creation <span class="coming-soon">(coming soon)</span></li>
+            <li>Studio plans for multi-instructor businesses</li>
+            <li>Role-based dashboard for owners and instructors</li>
           </ul>
           <div class="product-cta">
-            <a href="mailto:admin@fiorsaoirse.com?subject=FCA%20Enquiry" class="btn btn-primary">Enquire About FCA</a>
-            <a href="mailto:admin@fiorsaoirse.com?subject=FCA%20Studio%20Enquiry" class="secondary-link">Learn more about Studio plans &rarr;</a>
+            <a href="#contact" class="btn btn-primary">Learn More</a>
           </div>
         </div>
 
-        <!-- Card 2: Amazon Product Photo Enhancer -->
+        <!-- SnapReceipt -->
         <div class="product-card fade-in">
-          <div class="product-badge badge-active">
-            <span>&#10003;</span> Active
-          </div>
           <div class="product-icon">
-            <!-- Camera/image editing icon -->
             <svg viewBox="0 0 24 24">
-              <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
-              <circle cx="12" cy="13" r="4"/>
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
             </svg>
           </div>
-          <h3>Amazon Product Photo Enhancer</h3>
-          <p class="desc">AI-powered product image optimization for Amazon sellers. Transform standard product photos into professional, high-converting listings with intelligent editing and color matching.</p>
+          <h3>SnapReceipt</h3>
+          <p class="desc">Smart receipt tracking for business expense management. Snap a photo and let AI do the rest.</p>
           <ul class="product-features">
-            <li>AI background enhancement &amp; professional lighting</li>
-            <li>Smart color picker for brand-consistent imagery</li>
-            <li>Iterative editing &mdash; refine until perfect</li>
-            <li>Fast turnaround for high-volume sellers</li>
+            <li>Snap a photo &mdash; AI extracts vendor, amount, and date automatically</li>
+            <li>Tag receipts by client, trip, or expense category</li>
+            <li>Business vs personal categorization</li>
+            <li>Export to CSV for accounting and tax prep</li>
+            <li>Mobile-first PWA &mdash; works like a native app on your phone</li>
           </ul>
           <div class="product-cta">
-            <a href="mailto:admin@fiorsaoirse.com?subject=Amazon%20Photo%20Enhancer%20Enquiry" class="btn btn-primary">Enquire About Photo Enhancer</a>
-          </div>
-        </div>
-
-        <!-- Card 3: Custom AI Solutions -->
-        <div class="product-card fade-in">
-          <div class="product-badge badge-talk">
-            <span>&#128172;</span> Let's Talk
-          </div>
-          <div class="product-icon">
-            <!-- Gear/automation icon -->
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
-            </svg>
-          </div>
-          <h3>Custom AI Solutions</h3>
-          <p class="desc">Need intelligent automation tailored to your business? We build custom AI agents for construction, e-commerce, operations, and more. Tell us about your challenge &mdash; we'll show you what's possible.</p>
-          <ul class="product-features">
-            <li>Custom AI workflow design &amp; deployment</li>
-            <li>Industry-specific automation (construction, e-commerce, services)</li>
-            <li>Blueprint analysis, PPC optimization &amp; more</li>
-            <li>Consultation available &mdash; no obligation</li>
-          </ul>
-          <div class="product-cta">
-            <a href="mailto:admin@fiorsaoirse.com?subject=Custom%20AI%20Solution%20Enquiry" class="btn btn-accent">Start a Conversation</a>
+            <a href="#contact" class="btn btn-primary">Learn More</a>
           </div>
         </div>
 
@@ -845,66 +405,65 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
-       HOW IT WORKS
-       ════════════════════════════════════════ -->
+  <!-- HOW IT WORKS -->
   <section class="how-it-works" id="how-it-works">
     <div class="container">
       <div class="section-header fade-in">
         <h2>How It Works</h2>
-        <p>From signup to content in minutes.</p>
+        <p>From first conversation to running on autopilot.</p>
       </div>
 
-      <div class="steps-wrapper">
-        <div class="steps">
-          <div class="step fade-in">
-            <div class="step-number">1</div>
-            <h3>Sign Up &amp; Share Your Brand</h3>
-            <p>Tell us about your fitness niche, style, and target audience. We tailor everything to your voice.</p>
-          </div>
-          <div class="step fade-in">
-            <div class="step-number">2</div>
-            <h3>AI Generates Your Content</h3>
-            <p>Our agents create posts, images, and captions designed for engagement &mdash; all matching your brand.</p>
-          </div>
-          <div class="step fade-in">
-            <div class="step-number">3</div>
-            <h3>Review, Post &amp; Grow</h3>
-            <p>Approve your content, post to your channels, and watch your audience grow.</p>
-          </div>
+      <div class="steps">
+        <div class="step fade-in">
+          <div class="step-number">1</div>
+          <h3>Tell Us What You Need</h3>
+          <p>Reach out and describe your business. We'll figure out which tools fit best.</p>
+        </div>
+        <div class="step fade-in">
+          <div class="step-number">2</div>
+          <h3>We Set You Up</h3>
+          <p>We configure everything to match your brand, your workflow, and your team.</p>
+        </div>
+        <div class="step fade-in">
+          <div class="step-number">3</div>
+          <h3>AI Does the Heavy Lifting</h3>
+          <p>Our tools handle the repetitive work &mdash; content creation, expense tracking, and more.</p>
+        </div>
+        <div class="step fade-in">
+          <div class="step-number">4</div>
+          <h3>You Focus on Your Business</h3>
+          <p>Spend your time on what matters. Review, approve, and grow &mdash; we handle the rest.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
-       MISSION
-       ════════════════════════════════════════ -->
-  <section class="mission" id="mission">
+  <!-- ABOUT -->
+  <section class="about" id="about">
     <div class="container">
-      <div class="mission-content fade-in">
-        <h2>Fior Saoirse &mdash; True Freedom</h2>
-        <p class="mission-subtitle">"Fior Saoirse" (fee-ur see-ur-sha) &mdash; Irish Gaelic for "True Freedom"</p>
-        <div class="mission-text">
-          <p>We believe that technology should liberate, not complicate. Fior Saoirse was founded on a simple idea: the smartest tools should work for you, not the other way around.</p>
-          <p>Our AI agents handle the repetitive, time-consuming tasks that keep business owners from doing what they love &mdash; whether that's training clients, growing a brand, or building something new.</p>
-          <p>Every solution we build is designed with one goal: giving you back your most valuable asset &mdash; your time.</p>
+      <div class="about-content fade-in">
+        <h2>About Fiorsaoirse</h2>
+        <p class="about-subtitle">"Fior Saoirse" (fee-ur see-ur-sha) &mdash; Irish Gaelic for "True Freedom"</p>
+        <div class="about-text">
+          <p>Fiorsaoirse LLC is a Baltimore-based software company that builds AI automation tools for small businesses. We focus on solutions that actually work &mdash; practical, reliable, and designed for people who don't have time to babysit technology.</p>
+          <p>Founded by Mac McDonald &mdash; a former college athlete turned tech builder &mdash; Fiorsaoirse was born from a simple observation: small business owners spend too much time on tasks that machines should handle. Whether it's generating social media content or tracking business expenses, our tools give you back your most valuable asset &mdash; your time.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
-       CONTACT
-       ════════════════════════════════════════ -->
+  <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="container">
       <div class="contact-inner fade-in">
-        <h2>Ready for True Freedom?</h2>
-        <p>Whether you're a fitness professional, Amazon seller, or business owner looking to automate &mdash; we'd love to hear from you.</p>
+        <h2>Let's Talk</h2>
+        <p>Whether you're a fitness professional, a business owner tracking expenses, or just curious about what AI can do for you &mdash; we'd love to hear from you.</p>
 
         <div class="contact-form" id="contactForm">
-          <form id="enquiryForm" onsubmit="handleSubmit(event)">
+          <form id="enquiryForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+
             <div class="form-row">
               <div class="form-group" style="margin-bottom:0">
                 <label for="name">Name *</label>
@@ -917,22 +476,32 @@
             </div>
 
             <div class="form-group">
-              <label for="interest">I'm interested in...</label>
-              <select id="interest" name="interest">
+              <label for="phone">Phone <span class="optional">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+            </div>
+
+            <div class="form-group">
+              <label for="interest">I'm interested in... *</label>
+              <select id="interest" name="interest" required>
                 <option value="" disabled selected>Select an option</option>
-                <option value="Fitness Content Agent">Fitness Content Agent</option>
-                <option value="Amazon Photo Enhancer">Amazon Photo Enhancer</option>
-                <option value="Custom AI Solution">Custom AI Solution</option>
+                <option value="FCA Studio Agent">FCA Studio Agent</option>
+                <option value="SnapReceipt">SnapReceipt</option>
+                <option value="Both">Both</option>
                 <option value="Other">Other</option>
               </select>
             </div>
 
-            <div class="form-group">
-              <label for="message">Message <span style="font-weight:400;color:var(--color-muted)">(optional)</span></label>
-              <textarea id="message" name="message" placeholder="Tell us about your needs..."></textarea>
+            <div class="form-group conditional-field" id="instructorField">
+              <label for="instructors">Number of instructors at your studio <span class="optional">(optional)</span></label>
+              <input type="number" id="instructors" name="instructors" min="1" max="100" placeholder="e.g. 5">
             </div>
 
-            <button type="submit" class="form-submit">Send Enquiry</button>
+            <div class="form-group">
+              <label for="message">Message <span class="optional">(optional)</span></label>
+              <textarea id="message" name="message" placeholder="Tell us about your business and what you're looking for..."></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Send Message</button>
           </form>
 
           <div class="form-success" id="formSuccess">
@@ -949,12 +518,10 @@
     </div>
   </section>
 
-  <!-- ════════════════════════════════════════
-       FOOTER
-       ════════════════════════════════════════ -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
+      <div class="footer-inner">
         <div class="footer-brand">
           <a href="#" class="nav-logo">
             <svg viewBox="0 0 32 32" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -966,59 +533,22 @@
               <path d="M16 18.5L14 22h4l-2-3.5z" fill="#D4943A"/>
               <path d="M8 9c2-2 6-3 8-3s6 1 8 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/>
             </svg>
-            <span>Fior Saoirse</span>
+            <span>Fiorsaoirse</span>
           </a>
-          <p>True Freedom Through Intelligent Automation. AI-powered solutions for businesses ready to scale.</p>
+          <p>AI-powered tools for small businesses. Built in Baltimore.</p>
         </div>
-
-        <div class="footer-col">
-          <h4>Products</h4>
-          <ul>
-            <li><a href="#products">Fitness Content Agent</a></li>
-            <li><a href="#products">Amazon Photo Enhancer</a></li>
-            <li><a href="#products">Custom Solutions</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#mission">Our Mission</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Connect</h4>
-          <ul>
-            <li><a href="mailto:admin@fiorsaoirse.com">Email</a></li>
-            <li><a href="https://linkedin.com/company/fiorsaoirse" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="https://twitter.com/fiorsaoirse" target="_blank" rel="noopener">Twitter</a></li>
-          </ul>
+        <div class="footer-contact">
+          <p><a href="mailto:admin@fiorsaoirse.com">admin@fiorsaoirse.com</a></p>
+          <p>Baltimore, MD</p>
         </div>
       </div>
-
       <div class="footer-bottom">
-        <span>&copy; 2026 Fior Saoirse LLC. All rights reserved.</span>
-        <div class="footer-social">
-          <a href="mailto:admin@fiorsaoirse.com" aria-label="Email">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </a>
-          <a href="https://linkedin.com/company/fiorsaoirse" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="https://twitter.com/fiorsaoirse" target="_blank" rel="noopener" aria-label="Twitter">
-            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
-          </a>
-        </div>
+        <span>&copy; 2026 Fiorsaoirse LLC. All rights reserved.</span>
       </div>
     </div>
   </footer>
 
-  <!-- ════════════════════════════════════════
-       JAVASCRIPT
-       ════════════════════════════════════════ -->
+  <!-- JAVASCRIPT -->
   <script>
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
@@ -1032,52 +562,47 @@
       });
     });
 
-    // Scroll-triggered fade-in animations
+    // Scroll-triggered fade-in
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
 
-    document.querySelectorAll('.fade-in').forEach(function(el) {
-      observer.observe(el);
+    // Show/hide instructor count field based on interest selection
+    document.getElementById('interest').addEventListener('change', function() {
+      var show = this.value === 'FCA Studio Agent' || this.value === 'Both';
+      document.getElementById('instructorField').classList.toggle('show', show);
     });
 
-    // Form submission handler
-    function handleSubmit(e) {
+    // Netlify form submission with AJAX
+    document.getElementById('enquiryForm').addEventListener('submit', function(e) {
       e.preventDefault();
-
       var form = e.target;
-      var name = form.name.value;
-      var email = form.email.value;
-      var interest = form.interest.value;
-      var message = form.message.value;
+      var formData = new FormData(form);
 
-      // Build mailto body
-      var subject = encodeURIComponent('Website Enquiry' + (interest ? ' - ' + interest : ''));
-      var body = encodeURIComponent(
-        'Name: ' + name + '\n' +
-        'Email: ' + email + '\n' +
-        'Interest: ' + (interest || 'Not specified') + '\n\n' +
-        'Message:\n' + (message || 'No message provided')
-      );
-
-      // Open mailto
-      window.location.href = 'mailto:admin@fiorsaoirse.com?subject=' + subject + '&body=' + body;
-
-      // Show success message
-      form.style.display = 'none';
-      document.getElementById('formSuccess').classList.add('show');
-
-      // Reset after 5 seconds
-      setTimeout(function() {
-        form.reset();
-        form.style.display = 'block';
-        document.getElementById('formSuccess').classList.remove('show');
-      }, 5000);
-    }
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      }).then(function(resp) {
+        if (resp.ok) {
+          form.style.display = 'none';
+          document.getElementById('formSuccess').classList.add('show');
+          setTimeout(function() {
+            form.reset();
+            form.style.display = 'block';
+            document.getElementById('formSuccess').classList.remove('show');
+            document.getElementById('instructorField').classList.remove('show');
+          }, 5000);
+        } else {
+          alert('Something went wrong. Please try again or email us directly.');
+        }
+      }).catch(function() {
+        alert('Something went wrong. Please try again or email us directly.');
+      });
+    });
   </script>
 
 </body>
