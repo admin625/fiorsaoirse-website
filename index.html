@@ -169,13 +169,14 @@
        =================================================== */
     .products { padding: 100px 0; }
 
-    /* Tier 1 — Live agents: 2 cards side by side */
+    /* Tier 1 — Live agents: 3 cards */
     .agents-live {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 32px;
       margin-bottom: 48px;
     }
+    @media (max-width: 1024px) { .agents-live { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 768px) { .agents-live { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; margin-bottom: 48px; } }
 
     /* Tier 2 — Early Access: full width */
@@ -186,7 +187,7 @@
     /* Tier 3 — Pipeline: horizontal row */
     .agents-pipeline {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
     @media (max-width: 900px) { .agents-pipeline { grid-template-columns: repeat(2, 1fr); } }
@@ -290,6 +291,60 @@
     }
     .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
     .step p { font-size: 14px; color: var(--color-muted); line-height: 1.65; max-width: 240px; margin: 0 auto; }
+
+    .hiw-cta {
+      max-width: 540px;
+      margin: 56px auto 0;
+      text-align: center;
+    }
+    .hiw-cta-label {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 14px;
+    }
+    .hiw-cta-form {
+      display: flex;
+      gap: 10px;
+    }
+    .hiw-cta-input {
+      flex: 1;
+      padding: 14px 18px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--color-text);
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .hiw-cta-input:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(212,148,58,0.12);
+    }
+    .hiw-cta-input::placeholder { color: var(--color-muted); }
+    .hiw-cta-btn {
+      padding: 14px 24px;
+      background: var(--color-primary);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .hiw-cta-btn:hover { background: var(--color-secondary); transform: translateY(-1px); }
+    .hiw-cta-btn:active { transform: translateY(0) scale(0.98); }
+    .hiw-cta-btn:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+    @media (max-width: 520px) {
+      .hiw-cta-form { flex-direction: column; }
+      .hiw-cta-btn { width: 100%; }
+    }
 
     /* ===================================================
        SOCIAL PROOF
@@ -532,6 +587,30 @@
           </div>
         </article>
 
+        <!-- AI Photo Editor -->
+        <article class="product-card fade-in">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3a9 9 0 100 18 9 9 0 000-18z"/>
+              <path d="M12 3v18"/>
+              <path d="M12 3c4 4 4 14 0 18"/>
+              <path d="M12 3c-4 4-4 14 0 18"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3>AI Photo Editor <span class="badge badge-live">Live</span></h3>
+          <p class="desc">Professional AI-powered photo editing for product and brand imagery.</p>
+          <ul class="product-features">
+            <li>Describe what you want in plain English &mdash; background swaps, color shifts, style changes</li>
+            <li>Refine results with follow-up prompts &mdash; iterative, not one-shot</li>
+            <li>Professional-quality output for products and branding</li>
+            <li>No design skills required &mdash; if you can describe it, the agent can edit it</li>
+          </ul>
+          <div class="product-cta">
+            <a href="#contact" class="btn btn-primary">Learn More</a>
+          </div>
+        </article>
+
       </div>
 
       <!-- Tier 2: Early Access -->
@@ -560,10 +639,6 @@
 
       <!-- Tier 3: Pipeline / Coming Soon -->
       <div class="agents-pipeline">
-        <div class="pipeline-card fade-in">
-          <h4>AI Photo Editor <span class="badge badge-coming-soon">Coming Soon</span></h4>
-          <p>Describe what you want in plain English &mdash; the agent handles the rest.</p>
-        </div>
         <div class="pipeline-card fade-in">
           <h4>Restaurant Agent <span class="badge badge-coming-soon">Coming Soon</span></h4>
           <p>Menu management, social content, and review responses on autopilot.</p>
@@ -609,6 +684,14 @@
           <div class="step-number">4</div>
           <h3>Review and approve</h3>
           <p>Everything lands in your dashboard. Approve, edit, or let it run.</p>
+        </div>
+      </div>
+
+      <div class="hiw-cta fade-in">
+        <p class="hiw-cta-label">Not sure where to start?</p>
+        <div class="hiw-cta-form">
+          <input type="text" class="hiw-cta-input" id="hiwInput" placeholder="Describe your business — we'll match you with the right agent" autocomplete="off">
+          <button type="button" class="hiw-cta-btn" id="hiwBtn">Find my agent</button>
         </div>
       </div>
     </div>
@@ -1117,6 +1200,37 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
         }).catch(function() { /* silent fail — Netlify Forms is primary */ });
+      });
+    })();
+
+    // How It Works CTA — opens chat with the user's description
+    (function() {
+      var hiwInput = document.getElementById('hiwInput');
+      var hiwBtn = document.getElementById('hiwBtn');
+      if (!hiwInput || !hiwBtn) return;
+
+      function handleHiw() {
+        var text = hiwInput.value.trim();
+        if (!text) { hiwInput.focus(); return; }
+        // Open chat widget and send the message
+        var bubble = document.getElementById('chatBubble');
+        var win = document.getElementById('chatWindow');
+        if (win && !win.classList.contains('open')) { bubble.click(); }
+        // Wait for chat to open, then fill and send
+        setTimeout(function() {
+          var chatInput = document.getElementById('chatInput');
+          var chatSend = document.getElementById('chatSend');
+          if (chatInput && chatSend) {
+            chatInput.value = 'I run this kind of business: ' + text + '. Which agent is right for me?';
+            chatSend.click();
+          }
+        }, 400);
+        hiwInput.value = '';
+      }
+
+      hiwBtn.addEventListener('click', handleHiw);
+      hiwInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') { e.preventDefault(); handleHiw(); }
       });
     })();
   </script>
