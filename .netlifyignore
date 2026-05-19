@@ -1,0 +1,5 @@
+# Non-site files — do not publish
+*.md
+*.sql
+.env*
+.netlifyignore
