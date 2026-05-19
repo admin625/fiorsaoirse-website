@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI social content built for boutique fitness studios. Branded posts, matching images, scheduled when your audience is online. 5-day free trial — $299/mo founder pricing.">
+  <meta name="theme-color" content="#0B1D3A">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FCA Studio — AI social content for boutique fitness studios">
+  <meta property="og:description" content="AI social content built for boutique fitness studios. Branded posts, matching images, scheduled when your audience is online. 5-day free trial — $299/mo founder pricing.">
+  <meta property="og:url" content="https://www.fiorsaoirse.com/fca">
+  <meta property="og:type" content="website">
+
+  <link rel="canonical" href="https://www.fiorsaoirse.com/fca">
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+  <title>FCA Studio — AI social content for boutique fitness studios</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===================================================
+       DESIGN TOKENS
+       =================================================== */
+    :root {
+      --color-primary:    #0B1D3A;
+      --color-secondary:  #1E3A5F;
+      --color-accent:     #D4943A;
+      --color-bg:         #F8F9FA;
+      --color-card:       #FFFFFF;
+      --color-subtle:     #EDF1F5;
+      --color-text:       #2D3748;
+      --color-muted:      #64748B;
+      --color-border:     #E2E8F0;
+
+      --font-heading: 'Satoshi', sans-serif;
+      --font-body:    'Satoshi', sans-serif;
+
+      --shadow-sm: 0 1px 3px rgba(11,29,58,0.06);
+      --shadow-md: 0 4px 12px rgba(11,29,58,0.08);
+      --shadow-lg: 0 8px 30px rgba(11,29,58,0.10);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-pill: 999px;
+    }
+
+    /* ===================================================
+       RESET & BASE
+       =================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      color: var(--color-primary);
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      text-wrap: balance;
+    }
+    a { color: var(--color-secondary); text-decoration: none; }
+    a:hover { color: var(--color-accent); }
+    img { max-width: 100%; display: block; }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+
+    /* ===================================================
+       NAVIGATION
+       =================================================== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(11,29,58,0.95);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: box-shadow 0.3s;
+    }
+    .nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.15); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo img { width: 44px; height: 44px; border-radius: 6px; object-fit: contain; }
+    .nav-logo span { font-family: var(--font-heading); font-weight: 700; font-size: 18px; color: #fff; letter-spacing: -0.02em; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a[aria-current="page"] { color: #fff; }
+    .nav-cta {
+      background: var(--color-secondary); color: #fff !important;
+      padding: 8px 20px; border-radius: var(--radius-pill);
+      font-weight: 600; font-size: 14px; transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--color-accent); color: #fff !important; transform: translateY(-1px); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .nav-toggle svg { stroke: #fff; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 64px; left: 0; right: 0;
+        background: rgba(11,29,58,0.98); padding: 20px 24px; gap: 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav-toggle { display: block; }
+    }
+
+    /* ===================================================
+       HERO
+       =================================================== */
+    .hero {
+      padding: 140px 0 100px;
+      background: linear-gradient(160deg, #0B1D3A 0%, #142d52 50%, #1a3a66 100%);
+      color: #fff; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(212,148,58,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+    .hero-logo {
+      width: 200px; height: 200px; margin: 0 auto 28px;
+      border-radius: 18px; object-fit: contain;
+      filter: drop-shadow(0 6px 20px rgba(212,148,58,0.2));
+      box-shadow: 0 0 40px rgba(0, 180, 180, 0.25), 0 0 80px rgba(0, 180, 180, 0.1);
+    }
+    .hero-tagline {
+      display: inline-block; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--color-accent); margin-bottom: 24px;
+    }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; color: #fff; margin-bottom: 20px; letter-spacing: -0.03em; text-wrap: balance; }
+    .hero p { font-size: clamp(16px, 2vw, 19px); color: rgba(255,255,255,0.75); max-width: 560px; margin: 0 auto 36px; line-height: 1.7; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--radius-sm);
+      font-family: var(--font-heading); font-weight: 600; font-size: 15px;
+      transition: all 0.2s; cursor: pointer; border: none; text-decoration: none;
+    }
+    .btn:active { transform: translateY(0) scale(0.98); }
+    .btn-primary { background: var(--color-secondary); color: #fff; }
+    .btn-primary:hover { background: #2a4f7a; color: #fff; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .btn-accent { background: var(--color-accent); color: #fff; }
+    .btn-accent:hover { background: #c08530; color: #fff; transform: translateY(-1px); }
+
+    /* Supporting copy below CTAs */
+    .hero-cta-supporting {
+      display: block;
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ===================================================
+       SECTION SHARED
+       =================================================== */
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; margin-bottom: 12px; }
+    .section-header p { font-size: 17px; color: var(--color-muted); max-width: 560px; margin: 0 auto; }
+
+    /* ===================================================
+       WHO THIS IS FOR (single-column prose, subtle bg)
+       =================================================== */
+    .who-for { padding: 100px 0; background: var(--color-subtle); }
+    .who-for-content { max-width: 700px; margin: 0 auto; }
+    .who-for-content p { font-size: 17px; color: var(--color-muted); line-height: 1.8; }
+    .who-for-content p + p { margin-top: 20px; }
+
+    /* ===================================================
+       WHAT IT DOES (3-col grid)
+       =================================================== */
+    .what-it-does { padding: 100px 0; }
+    .what-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    @media (max-width: 1024px) { .what-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) { .what-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
+
+    .feature-card {
+      background: var(--color-card); border-radius: var(--radius-lg);
+      padding: 40px 32px; border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .feature-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .feature-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 14px; }
+    .feature-card p { font-size: 15px; color: var(--color-muted); line-height: 1.7; }
+
+    /* ===================================================
+       SOCIAL PROOF
+       =================================================== */
+    .social-proof { padding: 80px 0; background: var(--color-subtle); }
+    .social-proof-content { max-width: 720px; margin: 0 auto; text-align: center; }
+    .social-proof-content h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 700; margin-bottom: 14px; }
+    .social-proof-content p { font-size: 16px; color: var(--color-muted); line-height: 1.7; }
+    /* Loom slot — invisible until embed lands */
+    #loom-slot { min-height: 0; }
+
+    /* ===================================================
+       HOW IT WORKS — 3 steps
+       =================================================== */
+    .how-it-works { padding: 100px 0; }
+    .steps-3 {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px;
+    }
+    @media (max-width: 900px) { .steps-3 { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; } }
+    .step { text-align: center; }
+    .step-number {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--color-primary); color: #fff;
+      font-family: var(--font-heading); font-weight: 800; font-size: 22px;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+    }
+    .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .step p { font-size: 14px; color: var(--color-muted); line-height: 1.7; max-width: 280px; margin: 0 auto; }
+
+    /* ===================================================
+       PRICING — single centered card
+       =================================================== */
+    .pricing { padding: 100px 0; background: var(--color-subtle); }
+    .pricing-card {
+      max-width: 520px; margin: 0 auto;
+      background: var(--color-card);
+      border: 1.5px solid var(--color-accent);
+      border-radius: var(--radius-lg);
+      padding: 44px 36px;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+    }
+    .pricing-card .tier-label {
+      font-family: var(--font-heading);
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--color-accent); margin-bottom: 14px;
+    }
+    .pricing-card .price {
+      font-family: var(--font-heading);
+      font-size: clamp(40px, 6vw, 56px); font-weight: 800;
+      color: var(--color-primary); line-height: 1.1; margin-bottom: 8px;
+    }
+    .pricing-card .price span {
+      font-size: 18px; font-weight: 600; color: var(--color-muted);
+    }
+    .pricing-card .price-subline {
+      font-size: 14px; color: var(--color-muted); margin-bottom: 4px;
+    }
+    .pricing-card .standard-pricing {
+      font-size: 14px; color: var(--color-muted);
+      padding-top: 20px; margin-top: 20px;
+      border-top: 1px solid var(--color-border);
+    }
+    .pricing-card .includes {
+      font-size: 14px; color: var(--color-text); line-height: 1.8;
+      padding-top: 16px; margin-top: 16px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* ===================================================
+       FAQ — native details/summary accordion
+       =================================================== */
+    .faq { padding: 100px 0; }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .faq-item:hover { box-shadow: var(--shadow-sm); }
+    .faq-item summary {
+      padding: 20px 24px;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--color-primary);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-family: var(--font-heading);
+      font-size: 24px; font-weight: 400;
+      color: var(--color-accent); flex-shrink: 0;
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item summary:hover { color: var(--color-secondary); }
+    .faq-item summary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+    .faq-answer {
+      padding: 0 24px 22px;
+      font-size: 15px;
+      color: var(--color-muted);
+      line-height: 1.75;
+    }
+
+    /* ===================================================
+       FINAL CTA
+       =================================================== */
+    .final-cta { padding: 100px 0; background: var(--color-subtle); text-align: center; }
+    .final-cta h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 28px; }
+    .final-cta .hero-cta-supporting { color: var(--color-muted); }
+
+    /* ===================================================
+       FOOTER
+       =================================================== */
+    .footer { background: var(--color-primary); color: rgba(255,255,255,0.6); padding: 48px 0 32px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; margin-bottom: 32px; }
+    .footer-brand p { font-size: 14px; line-height: 1.65; max-width: 280px; margin-top: 12px; }
+    .footer-contact { font-size: 14px; text-align: right; }
+    .footer-contact a { color: rgba(255,255,255,0.7); }
+    .footer-contact a:hover { color: var(--color-accent); }
+    .footer-contact p { margin-bottom: 6px; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;
+      text-align: center; font-size: 13px;
+    }
+    @media (max-width: 520px) {
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .footer-contact { text-align: center; }
+      .footer-brand p { margin: 12px auto 0; }
+    }
+
+    /* ===================================================
+       ANIMATIONS
+       =================================================== */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="/assets/logo.png" alt="Fior Saoirse Logo">
+        <span>Fiorsaoirse</span>
+      </a>
+
+      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#products">Agents</a></li>
+        <li><a href="/#how-it-works">How It Works</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/fca" aria-current="page">FCA Studio</a></li>
+        <li><a href="/#contact" class="nav-cta">Get in Touch</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="container hero-content">
+      <img class="hero-logo" src="/assets/logo.png" alt="Fior Saoirse Logo">
+      <div class="hero-tagline">FCA Studio</div>
+      <h1>Social content that knows your studio &mdash; and knows when to post it.</h1>
+      <p>Set your studio's voice, visuals, and instructors once. FCA Studio generates branded posts and times them for when your audience is actually online. Built for boutique fitness studios &mdash; not generic fitness content.</p>
+      <a href="/start" class="btn btn-accent">Start 5-day free trial <span>&rarr;</span></a>
+      <p class="hero-cta-supporting">$299/mo founder pricing &mdash; first 100 studios lock in forever</p>
+    </div>
+  </section>
+
+  <main>
+
+  <!-- WHO THIS IS FOR -->
+  <section class="who-for" id="who-for">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Who this is for</h2>
+      </div>
+      <div class="who-for-content fade-in">
+        <p>Built for boutique fitness studios. Pilates, barre, yoga, HIIT, strength, CrossFit, MMA, martial arts, dance, climbing &mdash; anywhere a small studio is teaching classes and trying to grow.</p>
+        <p>Not built for: chains, franchises, big-box gyms, or fitness influencers. (If that's you, get in touch about enterprise.)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IT DOES -->
+  <section class="what-it-does" id="what-it-does">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>What it does</h2>
+      </div>
+      <div class="what-grid">
+        <article class="feature-card fade-in">
+          <h3>Your studio's voice, learned once</h3>
+          <p>Your colors, your typography, your photos, your instructor lineup, how you talk to your community. FCA Studio learns it once and applies it to every post you generate. Refine it as you go &mdash; it gets sharper with use.</p>
+        </article>
+        <article class="feature-card fade-in">
+          <h3>Posts and images, your way</h3>
+          <p>Captions, images, hashtags, formatted for Instagram, Facebook, Twitter, and LinkedIn. Use your own studio photo gallery, let FCA Studio generate images that match your brand, or mix and match. A week of branded content in five minutes.</p>
+        </article>
+        <article class="feature-card fade-in">
+          <h3>Scheduled when your audience is actually there</h3>
+          <p>FCA Studio learns when your specific audience is most active and queues posts for those windows. Not generic "best time to post" advice &mdash; your audience, your timing.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="social-proof" id="social-proof">
+    <div class="container">
+      <div class="social-proof-content fade-in">
+        <h2>Used today by founding studios across three continents.</h2>
+        <p>Real beta studios running FCA Studio in production today &mdash; US, New Zealand, and Spain.</p>
+        <div id="loom-slot"><!-- TODO: Katie Loom v2 embed pending --></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>How it works</h2>
+      </div>
+      <div class="steps-3">
+        <div class="step fade-in">
+          <div class="step-number">1</div>
+          <h3>Set your brand foundation (5 minutes)</h3>
+          <p>Tell FCA Studio who you are: your studio's voice, visual style, photo library, instructors, the class types you teach. This is your foundation. Every post is built on it.</p>
+        </div>
+        <div class="step fade-in">
+          <div class="step-number">2</div>
+          <h3>Generate your first week (5 minutes)</h3>
+          <p>Click generate. Get a full week of branded captions and images. Approve what works, regenerate what doesn't, edit anything you want to tweak.</p>
+        </div>
+        <div class="step fade-in">
+          <div class="step-number">3</div>
+          <h3>Schedule and let it run</h3>
+          <p>Approved posts queue at the times your audience is most active. Review future weeks as they generate, or set it on autopilot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Pricing</h2>
+      </div>
+      <div class="pricing-card fade-in">
+        <div class="tier-label">Founder cohort</div>
+        <div class="price">$299<span>/mo</span></div>
+        <p class="price-subline">Locked forever &mdash; first 100 studios only</p>
+        <p class="standard-pricing">Standard: $599/mo</p>
+        <p class="includes">5-day free trial &middot; 5 posts during trial &middot; no annual contracts &middot; cancel anytime</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Questions</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item fade-in">
+          <summary>What if my studio doesn't fit the typical mold?</summary>
+          <div class="faq-answer">FCA Studio learns your specific voice. The more you use it and refine it, the more it sounds like you. Studios in our founding cohort look very different from each other &mdash; Pilates, barre, hybrid HIIT/strength, and more. The product adapts.</div>
+        </details>
+        <details class="faq-item fade-in">
+          <summary>How is this different from just using ChatGPT?</summary>
+          <div class="faq-answer">ChatGPT forgets your brand every session. It doesn't know your colors, your photo style, or your studio's voice. It doesn't generate matching images. And it doesn't know when your audience is online. FCA Studio is purpose-built for studio social &mdash; every piece connects.</div>
+        </details>
+        <details class="faq-item fade-in">
+          <summary>What can I do during the 5-day trial?</summary>
+          <div class="faq-answer">Five days, five posts. Full product access &mdash; your gallery, AI assist, AI generation. Plenty of room to set your brand foundation, generate a week of content, see what FCA Studio sounds like in your voice, and decide if it's right for you.</div>
+        </details>
+        <details class="faq-item fade-in">
+          <summary>What happens after the trial?</summary>
+          <div class="faq-answer">If you continue, your founder pricing ($299/mo) locks in forever &mdash; as long as you're one of the first 100 studios. After slot 100, standard pricing applies ($599/mo).</div>
+        </details>
+        <details class="faq-item fade-in">
+          <summary>Do I need to be technical?</summary>
+          <div class="faq-answer">No. If you can set up an Instagram account, you can use FCA Studio.</div>
+        </details>
+        <details class="faq-item fade-in">
+          <summary>Can I cancel anytime?</summary>
+          <div class="faq-answer">Yes. No annual contracts, no cancel fees. We earn your renewal every month.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="final-cta">
+    <div class="container">
+      <div class="fade-in">
+        <h2>Try it on your studio.</h2>
+        <a href="/start" class="btn btn-accent">Start 5-day free trial <span>&rarr;</span></a>
+        <p class="hero-cta-supporting">$299/mo founder pricing &mdash; first 100 studios lock in forever</p>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo">
+            <img src="/assets/logo.png" alt="Fior Saoirse Logo" width="28" height="28">
+            <span>Fiorsaoirse</span>
+          </a>
+          <p>AI agents built for your industry.</p>
+        </div>
+        <div class="footer-contact">
+          <p><a href="mailto:admin@fiorsaoirse.com">admin@fiorsaoirse.com</a></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Fior Saoirse. All rights reserved.</span>
+        <span style="margin-left: 16px;"><a href="#" style="color: rgba(255,255,255,0.4);">Privacy</a> &middot; <a href="#" style="color: rgba(255,255,255,0.4);">Terms</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT (trimmed for /fca — no contact form, no "Find my agent" input) -->
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // Scroll-triggered fade-in
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+  </script>
+
+  <!-- CHAT AGENT WIDGET -->
+  <style>
+    .chat-bubble {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--color-primary); color: #fff; border: none; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(11,29,58,0.35);
+      z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .chat-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(11,29,58,0.45); }
+    .chat-bubble svg { width: 28px; height: 28px; fill: #fff; }
+    .chat-bubble.hidden { display: none; }
+
+    .chat-window {
+      position: fixed; bottom: 96px; right: 24px;
+      width: 380px; max-height: 520px;
+      background: var(--color-card); border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(11,29,58,0.25);
+      z-index: 9999;
+      display: flex; flex-direction: column; overflow: hidden;
+      opacity: 0; transform: translateY(20px) scale(0.95);
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s;
+    }
+    .chat-window.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+    .chat-header {
+      background: var(--color-primary); color: #fff;
+      padding: 16px 18px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .chat-header-title { font-family: var(--font-heading); font-size: 15px; font-weight: 600; }
+    .chat-close { background: none; border: none; color: #fff; cursor: pointer; padding: 4px; opacity: 0.8; transition: opacity 0.15s; }
+    .chat-close:hover { opacity: 1; }
+    .chat-close svg { width: 20px; height: 20px; fill: #fff; }
+
+    .chat-messages {
+      flex: 1; overflow-y: auto; padding: 16px;
+      display: flex; flex-direction: column; gap: 12px;
+      min-height: 200px; max-height: 340px;
+    }
+
+    .chat-msg {
+      max-width: 85%; padding: 10px 14px; border-radius: 14px;
+      font-size: 14px; line-height: 1.5; font-family: var(--font-body);
+      word-wrap: break-word;
+    }
+    .chat-msg.bot { background: var(--color-subtle); color: var(--color-text); align-self: flex-start; border-bottom-left-radius: 4px; }
+    .chat-msg.user { background: var(--color-primary); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .chat-msg.typing {
+      background: var(--color-subtle); align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      display: flex; gap: 4px; padding: 12px 18px;
+    }
+    .chat-msg.typing span {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--color-muted); animation: chatBounce 1.2s infinite;
+    }
+    .chat-msg.typing span:nth-child(2) { animation-delay: 0.2s; }
+    .chat-msg.typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes chatBounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-6px); }
+    }
+
+    .chat-input-area { display: flex; padding: 12px; border-top: 1px solid var(--color-border); gap: 8px; flex-shrink: 0; }
+    .chat-input {
+      flex: 1; border: 1px solid var(--color-border); border-radius: 10px;
+      padding: 10px 14px; font-size: 14px; font-family: var(--font-body);
+      outline: none; transition: border-color 0.2s; resize: none;
+    }
+    .chat-input:focus { border-color: var(--color-secondary); }
+    .chat-send {
+      background: var(--color-accent); color: #fff; border: none; border-radius: 10px;
+      padding: 10px 14px; cursor: pointer; transition: opacity 0.15s;
+      display: flex; align-items: center;
+    }
+    .chat-send:hover { opacity: 0.9; }
+    .chat-send:disabled { opacity: 0.5; cursor: default; }
+    .chat-send svg { width: 18px; height: 18px; fill: #fff; }
+
+    .chat-powered { text-align: center; padding: 6px; font-size: 11px; color: var(--color-muted); font-family: var(--font-body); flex-shrink: 0; }
+
+    @media (max-width: 520px) {
+      .chat-window {
+        bottom: 0; right: 0; left: 0; width: 100%;
+        max-height: 100vh; max-height: 100dvh;
+        border-radius: 16px 16px 0 0;
+      }
+      .chat-messages { max-height: calc(100dvh - 180px); }
+      .chat-bubble { bottom: 16px; right: 16px; width: 54px; height: 54px; }
+      .chat-bubble svg { width: 24px; height: 24px; }
+    }
+  </style>
+
+  <button class="chat-bubble" id="chatBubble" aria-label="Open chat">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/></svg>
+  </button>
+
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <span class="chat-header-title">Fiorsaoirse AI Assistant</span>
+      <button class="chat-close" id="chatClose" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Type a message..." autocomplete="off">
+      <button class="chat-send" id="chatSend" aria-label="Send message">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div class="chat-powered">Powered by Fiorsaoirse</div>
+  </div>
+
+  <script>
+    (function() {
+      var CHAT_URL = 'https://jmac.app.n8n.cloud/webhook/chat-agent';
+      var chatOpen = false;
+      var chatHistory = [];
+      var sessionId = sessionStorage.getItem('fior_chat_sid') || ('s_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6));
+      sessionStorage.setItem('fior_chat_sid', sessionId);
+      var firstOpen = true;
+
+      var bubble = document.getElementById('chatBubble');
+      var win = document.getElementById('chatWindow');
+      var closeBtn = document.getElementById('chatClose');
+      var input = document.getElementById('chatInput');
+      var sendBtn = document.getElementById('chatSend');
+      var msgs = document.getElementById('chatMessages');
+
+      function addMsg(text, role) {
+        var div = document.createElement('div');
+        div.className = 'chat-msg ' + role;
+        div.textContent = text;
+        msgs.appendChild(div);
+        msgs.scrollTop = msgs.scrollHeight;
+      }
+
+      function showTyping() {
+        var div = document.createElement('div');
+        div.className = 'chat-msg typing';
+        div.id = 'chatTyping';
+        div.innerHTML = '<span></span><span></span><span></span>';
+        msgs.appendChild(div);
+        msgs.scrollTop = msgs.scrollHeight;
+      }
+
+      function hideTyping() {
+        var t = document.getElementById('chatTyping');
+        if (t) t.remove();
+      }
+
+      function toggleChat() {
+        chatOpen = !chatOpen;
+        win.classList.toggle('open', chatOpen);
+        if (chatOpen) {
+          if (firstOpen) {
+            addMsg("Hey! I’m the Fiorsaoirse AI assistant. I can answer questions about FCA Studio or help you get in touch. What can I help with?", 'bot');
+            firstOpen = false;
+          }
+          setTimeout(function() { input.focus(); }, 300);
+        }
+      }
+
+      bubble.addEventListener('click', toggleChat);
+      closeBtn.addEventListener('click', toggleChat);
+
+      function sendMessage() {
+        var text = input.value.trim();
+        if (!text) return;
+
+        addMsg(text, 'user');
+        chatHistory.push({ role: 'user', content: text });
+        input.value = '';
+        sendBtn.disabled = true;
+        showTyping();
+
+        fetch(CHAT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: text,
+            session_id: sessionId,
+            conversation_history: chatHistory.slice(0, -1)
+          })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          hideTyping();
+          var reply = data.response || 'Sorry, something went wrong. Please try again.';
+          addMsg(reply, 'bot');
+          chatHistory.push({ role: 'assistant', content: reply });
+          sendBtn.disabled = false;
+          input.focus();
+        })
+        .catch(function() {
+          hideTyping();
+          addMsg('Sorry, I\'m having trouble connecting. Please try again in a moment.', 'bot');
+          sendBtn.disabled = false;
+        });
+      }
+
+      sendBtn.addEventListener('click', sendMessage);
+      input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
