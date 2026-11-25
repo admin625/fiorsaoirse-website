@@ -935,28 +935,6 @@
       });
     })();
 
-    // "Find my agent": the chat assistant is offline for its rebuild, so this prefills the contact
-    // form's message and scrolls to it instead of opening the chat.
-    (function() {
-      var hiwInput = document.getElementById('hiwInput');
-      var hiwBtn = document.getElementById('hiwBtn');
-      if (!hiwInput || !hiwBtn) return;
-      function handleHiw() {
-        var text = hiwInput.value.trim();
-        if (!text) { hiwInput.focus(); return; }
-        var msg = document.getElementById('message');
-        if (msg && !msg.value) msg.value = 'I run this kind of business: ' + text + '. Which agent is right for me?';
-        var contact = document.getElementById('contact');
-        if (contact) contact.scrollIntoView({ behavior: 'smooth' });
-        var name = document.getElementById('name');
-        if (name) setTimeout(function() { name.focus({ preventScroll: true }); }, 500);
-        hiwInput.value = '';
-      }
-      hiwBtn.addEventListener('click', handleHiw);
-      hiwInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') { e.preventDefault(); handleHiw(); }
-      });
-    })();
   </script>
 
 </body>
