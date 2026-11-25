@@ -818,6 +818,9 @@
             </div>
 
             <button type="submit" class="form-submit">Send Message</button>
+            <div class="form-error" id="formError" role="alert" hidden style="margin-top:14px;padding:12px 14px;border-radius:8px;background:#FEF2F2;color:#991B1B;font-size:15px;">
+              We couldn't send your message. Please email us at <a href="mailto:admin@fiorsaoirse.com" style="color:#991B1B;text-decoration:underline;">admin@fiorsaoirse.com</a> and we'll pick it up directly.
+            </div>
           </form>
 
           <div class="form-success" id="formSuccess">
@@ -886,52 +889,52 @@
       document.getElementById('instructorField').classList.toggle('show', show);
     });
 
-    // Netlify form submission with AJAX
-    document.getElementById('enquiryForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      var form = e.target;
-      var formData = new FormData(form);
-
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      }).then(function(resp) {
-        if (resp.ok) {
-          form.style.display = 'none';
-          document.getElementById('formSuccess').classList.add('show');
-          setTimeout(function() {
-            form.reset();
-            form.style.display = 'block';
-            document.getElementById('formSuccess').classList.remove('show');
-            document.getElementById('instructorField').classList.remove('show');
-          }, 5000);
-        } else {
-          alert('Something went wrong. Please try again or email us directly.');
-        }
-      }).catch(function() {
-        alert('Something went wrong. Please try again or email us directly.');
-      });
-    });
   </script>
 
   <script>
-    // Contact form: also POST to the n8n contact-form handler (writes fca_leadgen.leads).
-    // Netlify Forms (the handler above) stays primary. Moved out of the chat widget on 2026-10-16,
-    // when the chat assistant was taken offline for its rebuild.
+    // Contact form (HQ 2026-11-25): the n8n contact-form handler is the ONLY path (Netlify Forms is off).
+    // We wait for it to confirm the lead was saved (200 + success:true) before showing "Message Sent!".
+    // Anything else (error status, timeout, network failure) shows an error with the email address. Never silent.
     (function() {
       var CONTACT_URL = 'https://jmac.app.n8n.cloud/webhook/contact-form';
-      var enquiryForm = document.getElementById('enquiryForm');
-      if (!enquiryForm) return;
-      enquiryForm.addEventListener('submit', function() {
-        var fd = new FormData(enquiryForm);
+      var form = document.getElementById('enquiryForm');
+      if (!form) return;
+      var btn = form.querySelector('.form-submit');
+      var okBox = document.getElementById('formSuccess');
+      var errBox = document.getElementById('formError');
+      function showError() {
+        errBox.hidden = false;
+        btn.disabled = false; btn.textContent = 'Send Message';
+      }
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        errBox.hidden = true;
+        var fd = new FormData(form);
+        // Honeypot: a person never fills this hidden field; pretend success and send nothing.
+        if (fd.get('bot-field')) { form.style.display = 'none'; okBox.classList.add('show'); return; }
         var data = {};
-        fd.forEach(function(val, key) { data[key] = val; });
+        fd.forEach(function(val, key) { if (key !== 'bot-field' && key !== 'form-name') data[key] = val; });
+        btn.disabled = true; btn.textContent = 'Sending…';
+        var ctrl = ('AbortController' in window) ? new AbortController() : null;
+        var timer = ctrl ? setTimeout(function() { ctrl.abort(); }, 20000) : null;
         fetch(CONTACT_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        }).catch(function() { /* silent fail — Netlify Forms is primary */ });
+          body: JSON.stringify(data),
+          signal: ctrl ? ctrl.signal : undefined
+        }).then(function(resp) {
+          return resp.json().catch(function() { return {}; }).then(function(j) { return { ok: resp.ok, j: j }; });
+        }).then(function(r) {
+          if (timer) clearTimeout(timer);
+          if (!(r.ok && r.j && r.j.success === true)) { showError(); return; }
+          form.style.display = 'none';
+          okBox.classList.add('show');
+          form.reset();
+          document.getElementById('instructorField').classList.remove('show');
+        }).catch(function() {
+          if (timer) clearTimeout(timer);
+          showError();
+        });
       });
     })();
 
