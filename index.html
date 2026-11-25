@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Fiorsaoirse builds AI agents purpose-built for your industry. Serving fitness studios, restaurants, real estate, home cooks, and more.">
+  <meta name="description" content="Fiorsaoirse builds AI agents purpose-built for your industry. Currently serving boutique fitness studios.">
   <meta name="theme-color" content="#0B1D3A">
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="apple-touch-icon" href="assets/logo.png">
@@ -261,6 +261,8 @@
       background: var(--color-accent);
       color: #fff;
     }
+    .badge-paused { background: #E2E8F0; color: #475569; }
+    .badge-invite { background: #EDE9FE; color: #5B21B6; }
     .badge-coming-soon {
       background: #94A3B8;
       color: #fff;
@@ -515,7 +517,7 @@
   <nav class="nav" id="nav">
     <div class="container nav-inner">
       <a href="#" class="nav-logo">
-        <img src="assets/logo.png" alt="Fior Saoirse Logo">
+        <img src="assets/logo.png" alt="Fiorsaoirse logo">
         <span>Fiorsaoirse</span>
       </a>
 
@@ -538,10 +540,10 @@
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="container hero-content">
-      <img class="hero-logo" src="assets/logo.png" alt="Fior Saoirse Logo">
-      <div class="hero-tagline">Fior Saoirse</div>
+      <img class="hero-logo" src="assets/logo.png" alt="Fiorsaoirse logo">
+      <div class="hero-tagline">Fiorsaoirse</div>
       <h1>AI agents built for your industry &mdash; not everyone else's</h1>
-      <p>Currently serving fitness studios, restaurants, real estate, home cooks, and more.</p>
+      <p>Currently serving boutique fitness studios.</p>
       <a href="/fca/" class="btn btn-accent">Start 5-day free trial <span>&rarr;</span></a>
       <p class="hero-cta-supporting">$299/mo founding rate &mdash; locked while you stay subscribed</p>
     </div>
@@ -582,10 +584,10 @@
           <h3>FCA Studio Agent <span class="badge badge-live">Live</span></h3>
           <p class="desc">AI-powered social media content generation built for fitness professionals.</p>
           <ul class="product-features">
-            <li>Generates a week of social content in minutes &mdash; posts that sound like my studio, not a robot</li>
-            <li>Matches and edits photos automatically &mdash; no more digging through camera rolls</li>
-            <li>My instructors log in and see their own content ready to review</li>
-            <li>Handles Instagram feeds, stories, and threads &mdash; format-aware, not one-size-fits-all</li>
+            <li>Posts that sound like my studio, not a robot</li>
+            <li>Picks a matching photo from my library, or makes one styled after my studio</li>
+            <li>Caption, image and my logo, ready to copy and post</li>
+            <li>Built for Instagram first</li>
           </ul>
           <div class="product-cta">
             <a href="/fca/" class="btn btn-primary">Start 5-day free trial</a>
@@ -609,7 +611,7 @@
               <polyline points="10 18 11.5 19.5 14 17" stroke="#22C55E" stroke-width="2.2" fill="none"/>
             </svg>
           </div>
-          <h3>SnapReceipt <span class="badge badge-live">Live</span></h3>
+          <h3>SnapReceipt <span class="badge badge-paused">Paused</span></h3>
           <p class="desc">Smart receipt tracking for business expense management.</p>
           <ul class="product-features">
             <li>Snap a photo of any receipt &mdash; vendor, amount, date extracted instantly</li>
@@ -646,7 +648,7 @@
               <line x1="21.5" y1="0.8" x2="21.5" y2="0" stroke="#D4943A" stroke-width="1" opacity="0.6"/>
             </svg>
           </div>
-          <h3>AI Photo Editor <span class="badge badge-live">Live</span></h3>
+          <h3>AI Photo Editor <span class="badge badge-invite">By invitation</span></h3>
           <p class="desc">Professional AI-powered photo editing for product and brand imagery.</p>
           <ul class="product-features">
             <li>Describe what you want in plain English &mdash; background swaps, color shifts, style changes</li>
@@ -726,39 +728,20 @@
         <div class="step fade-in">
           <div class="step-number">3</div>
           <h3>The agent goes to work</h3>
-          <p>Content, photos, expenses, recipes &mdash; handled automatically, every day.</p>
+          <p>It drafts the work in your voice: posts, photos, and more as new agents launch.</p>
         </div>
         <div class="step fade-in">
           <div class="step-number">4</div>
           <h3>Review and approve</h3>
-          <p>Everything lands in your dashboard. Approve, edit, or let it run.</p>
+          <p>Everything lands in your dashboard. Approve it, edit it, then use it.</p>
         </div>
       </div>
 
       <div class="hiw-cta fade-in">
         <p class="hiw-cta-label">Not sure where to start?</p>
-        <div class="hiw-cta-form">
-          <input type="text" class="hiw-cta-input" id="hiwInput" placeholder="Describe your business — we'll match you with the right agent" autocomplete="off">
-          <button type="button" class="hiw-cta-btn" id="hiwBtn">Find my agent</button>
+        <div class="hiw-cta-form" style="justify-content:center">
+          <a href="#products" class="hiw-cta-btn" id="hiwBtn">Find my agent</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOCIAL PROOF -->
-  <section class="social-proof" id="social-proof">
-    <div class="container fade-in">
-      <p class="social-proof-label">Trusted by</p>
-      <div class="logo-row">
-        <div class="logo-placeholder"></div>
-        <div class="logo-placeholder"></div>
-        <div class="logo-placeholder"></div>
-        <div class="logo-placeholder"></div>
-        <div class="logo-placeholder"></div>
-        <div class="logo-placeholder"></div>
-      </div>
-      <div class="testimonial-placeholder">
-        <blockquote>Customer testimonials coming soon.</blockquote>
       </div>
     </div>
   </section>
@@ -768,7 +751,7 @@
     <div class="container">
       <div class="about-content fade-in">
         <h2>About Fiorsaoirse</h2>
-        <p class="about-subtitle">"Fior Saoirse" (fee-ur see-ur-sha) &mdash; Irish Gaelic for "True Freedom"</p>
+        <p class="about-subtitle">From the Irish Gaelic "f&iacute;or saoirse" (fee-ur see-ur-sha), "true freedom"</p>
         <div class="about-text">
           <p>Fiorsaoirse is a one-person software company. I'm Mac &mdash; I build AI agents that are purpose-built for specific industries, not generic tools that try to do everything for everyone.</p>
           <p>The name means True Freedom in Irish Gaelic. That's the point: freedom from generic AI that doesn't understand your business, your customers, or your workflow. Every agent I build starts by learning the language and patterns of one specific vertical &mdash; fitness, food, real estate, hospitality &mdash; and works the way people in that industry actually work.</p>
@@ -788,7 +771,7 @@
         <div class="contact-form" id="contactForm">
           <form id="enquiryForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="contact">
-            <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+            <p style="display:none" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 
             <div class="form-row">
               <div class="form-group" style="margin-bottom:0">
@@ -802,8 +785,8 @@
             </div>
 
             <div class="form-group">
-              <label for="business_name">Studio name *</label>
-              <input type="text" id="business_name" name="business_name" required placeholder="Your studio or business name">
+              <label for="business_name">Business name *</label>
+              <input type="text" id="business_name" name="business_name" required placeholder="Your business name">
             </div>
 
             <div class="form-group">
@@ -862,7 +845,7 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <a href="#" class="nav-logo">
-            <img src="assets/logo.png" alt="Fior Saoirse Logo" width="28" height="28">
+            <img src="assets/logo.png" alt="Fiorsaoirse logo" width="28" height="28">
             <span>Fiorsaoirse</span>
           </a>
           <p>AI agents built for your industry.</p>
@@ -872,7 +855,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 Fior Saoirse. All rights reserved.</span>
+        <span>&copy; 2026 Fiorsaoirse LLC. All rights reserved.</span>
         <span style="margin-left: 16px;"><a href="#" style="color: rgba(255,255,255,0.4);">Privacy</a> &middot; <a href="#" style="color: rgba(255,255,255,0.4);">Terms</a></span>
       </div>
     </div>
@@ -955,28 +938,6 @@
       });
     })();
 
-    // "Find my agent": the chat assistant is offline for its rebuild, so this prefills the contact
-    // form's message and scrolls to it instead of opening the chat.
-    (function() {
-      var hiwInput = document.getElementById('hiwInput');
-      var hiwBtn = document.getElementById('hiwBtn');
-      if (!hiwInput || !hiwBtn) return;
-      function handleHiw() {
-        var text = hiwInput.value.trim();
-        if (!text) { hiwInput.focus(); return; }
-        var msg = document.getElementById('message');
-        if (msg && !msg.value) msg.value = 'I run this kind of business: ' + text + '. Which agent is right for me?';
-        var contact = document.getElementById('contact');
-        if (contact) contact.scrollIntoView({ behavior: 'smooth' });
-        var name = document.getElementById('name');
-        if (name) setTimeout(function() { name.focus({ preventScroll: true }); }, 500);
-        hiwInput.value = '';
-      }
-      hiwBtn.addEventListener('click', handleHiw);
-      hiwInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') { e.preventDefault(); handleHiw(); }
-      });
-    })();
   </script>
 
 </body>
