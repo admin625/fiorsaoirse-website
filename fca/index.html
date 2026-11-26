@@ -358,6 +358,48 @@
        =================================================== */
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Contact form (moved here from the root page, HQ 2026-11-26) */
+    .contact-form {
+      max-width: 600px; margin: 0 auto;
+      background: var(--color-card); border-radius: var(--radius-lg);
+      padding: 36px; border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm); text-align: left;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } .contact-form { padding: 24px; } }
+    .form-group { margin-bottom: 16px; }
+    .form-group:last-of-type { margin-bottom: 24px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--color-primary); margin-bottom: 6px; }
+    .form-group .optional { font-weight: 400; color: var(--color-muted); }
+    .form-group input,
+    .form-group textarea {
+      width: 100%; padding: 12px 14px;
+      border: 1.5px solid var(--color-border); border-radius: var(--radius-sm);
+      font-family: var(--font-body); font-size: 15px; color: var(--color-text);
+      background: #fff; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none; border-color: var(--color-secondary);
+      box-shadow: 0 0 0 3px rgba(30,58,95,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%; padding: 14px;
+      background: var(--color-secondary); color: #fff; border: none;
+      border-radius: var(--radius-sm); font-family: var(--font-heading);
+      font-weight: 700; font-size: 16px; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .form-submit:hover { background: #2a4f7a; transform: translateY(-1px); }
+    .form-submit:disabled { opacity: 0.7; cursor: default; transform: none; }
+    .form-success { display: none; text-align: center; padding: 40px 20px; }
+    .form-success.show { display: block; }
+    .form-success .check-icon { font-size: 48px; margin-bottom: 16px; color: #166534; }
+    .form-success h3 { font-size: 22px; margin-bottom: 8px; }
+    .form-success p { color: var(--color-muted); font-size: 15px; }
+    .contact-secondary { margin-top: 24px; font-size: 14px; color: var(--color-muted); text-align: center; }
   </style>
 </head>
 <body>
@@ -544,9 +586,56 @@
       <div class="section-header fade-in">
         <h2>Questions?</h2>
       </div>
-      <div class="who-for-content fade-in">
-        <p>Email <a href="mailto:admin@fiorsaoirse.com">admin@fiorsaoirse.com</a>. You'll hear back from Mac, who builds FCA Studio.</p>
+      <div class="contact-form fade-in" id="contactForm">
+        <form id="enquiryForm" name="contact" method="POST">
+          <input type="hidden" name="form-name" value="contact">
+          <input type="hidden" name="interest" value="FCA Studio Agent">
+          <p style="display:none" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom:0">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group" style="margin-bottom:0">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="business_name">Business name *</label>
+            <input type="text" id="business_name" name="business_name" required placeholder="Your studio's name">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone <span class="optional">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+          </div>
+
+          <div class="form-group">
+            <label for="instructors">Number of instructors at your studio <span class="optional">(optional)</span></label>
+            <input type="number" id="instructors" name="instructors" min="1" max="100" placeholder="e.g. 5">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message <span class="optional">(optional)</span></label>
+            <textarea id="message" name="message" placeholder="Tell us about your studio and what you're looking for..."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Send Message</button>
+          <div class="form-error" id="formError" role="alert" hidden style="margin-top:14px;padding:12px 14px;border-radius:8px;background:#FEF2F2;color:#991B1B;font-size:15px;">
+            We couldn't send your message. Please email us at <a href="mailto:admin@fiorsaoirse.com" style="color:#991B1B;text-decoration:underline;">admin@fiorsaoirse.com</a> and we'll pick it up directly.
+          </div>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <div class="check-icon">&#10003;</div>
+          <h3>Message Sent!</h3>
+          <p>Thanks for reaching out. We'll get back to you within 24 hours.</p>
+        </div>
       </div>
+      <p class="contact-secondary">Or email <a href="mailto:admin@fiorsaoirse.com">admin@fiorsaoirse.com</a>. You'll hear back from Mac, who builds FCA Studio.</p>
     </div>
   </section>
 
@@ -574,7 +663,7 @@
     </div>
   </footer>
 
-  <!-- JAVASCRIPT (trimmed for /fca — no contact form, no "Find my agent" input) -->
+  <!-- JAVASCRIPT (trimmed for /fca: no "Find my agent" input; contact form handler below) -->
   <script>
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
@@ -595,6 +684,51 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+    // Contact form (same handler as the root page since PR #3, HQ 2026-11-25/26): the n8n contact-form handler
+    // is the ONLY path (Netlify Forms is off). "Message Sent!" only after it confirms the save (200 + success:true).
+    // Anything else (error status, timeout, network failure) shows an error with the email address. Never silent.
+    (function() {
+      var CONTACT_URL = 'https://jmac.app.n8n.cloud/webhook/contact-form';
+      var form = document.getElementById('enquiryForm');
+      if (!form) return;
+      var btn = form.querySelector('.form-submit');
+      var okBox = document.getElementById('formSuccess');
+      var errBox = document.getElementById('formError');
+      function showError() {
+        errBox.hidden = false;
+        btn.disabled = false; btn.textContent = 'Send Message';
+      }
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        errBox.hidden = true;
+        var fd = new FormData(form);
+        // Honeypot: a person never fills this hidden field; pretend success and send nothing.
+        if (fd.get('bot-field')) { form.style.display = 'none'; okBox.classList.add('show'); return; }
+        var data = {};
+        fd.forEach(function(val, key) { if (key !== 'bot-field' && key !== 'form-name') data[key] = val; });
+        btn.disabled = true; btn.textContent = 'Sending…';
+        var ctrl = ('AbortController' in window) ? new AbortController() : null;
+        var timer = ctrl ? setTimeout(function() { ctrl.abort(); }, 20000) : null;
+        fetch(CONTACT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+          signal: ctrl ? ctrl.signal : undefined
+        }).then(function(resp) {
+          return resp.json().catch(function() { return {}; }).then(function(j) { return { ok: resp.ok, j: j }; });
+        }).then(function(r) {
+          if (timer) clearTimeout(timer);
+          if (!(r.ok && r.j && r.j.success === true)) { showError(); return; }
+          form.style.display = 'none';
+          okBox.classList.add('show');
+          form.reset();
+        }).catch(function() {
+          if (timer) clearTimeout(timer);
+          showError();
+        });
+      });
+    })();
   </script>
 
 
